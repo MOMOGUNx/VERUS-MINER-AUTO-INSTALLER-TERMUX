@@ -15,7 +15,7 @@ Skrip ini membolehkan anda untuk memasang **Verus miner (ccminer)** secara autom
 ## INSTALL
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/MOMOGUNx/verus-termux-installer/main/install-termux.sh | bash
+curl -sLO https://raw.githubusercontent.com/MOMOGUNx/VERUS-MINER-AUTO-INSTALLER-TERMUX/main/install-termux.sh && bash install-termux.sh
 
 ```
 
