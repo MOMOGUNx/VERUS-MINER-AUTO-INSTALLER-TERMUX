@@ -1,8 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-echo " "
 echo "Autoscript Verus Miner Installer by MOMOGUNx"
-echo " "
 
 # 1. INSTALL BASIC
 pkg update && pkg upgrade -y
