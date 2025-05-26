@@ -22,8 +22,7 @@ bash install-termux.sh
 ## INSTALL-LINUX
 
 ```bash
-wget
-https://raw.githubusercontent.com/MOMOGUNx/verus-miner-installer/main/install-linux.sh
+wget https://raw.githubusercontent.com/MOMOGUNx/verus-miner-installer/main/install-linux.sh
 
 ```
 
