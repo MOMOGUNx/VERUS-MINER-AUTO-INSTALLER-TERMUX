@@ -1,4 +1,4 @@
-# Verus Miner Auto Installer for Termux
+# Verus Miner Auto Installer For Termux
 
 **Script by MOMOGUNx**
 
