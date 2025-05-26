@@ -1,7 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-#!/data/data/com.termux/files/usr/bin/bash
-
 # COLOUR
 CYAN='\033[0;36m'
 GREEN='\033[0;32m'
