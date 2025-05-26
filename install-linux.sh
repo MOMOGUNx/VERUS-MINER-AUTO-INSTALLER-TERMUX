@@ -8,15 +8,15 @@ echo " "
 sudo apt update && sudo apt upgrade -y
 sudo apt install git curl wget nano build-essential automake autotools-dev libssl-dev libcurl4-openssl-dev libjansson-dev -y
 
-# 2.
+# 2. Klon ccminer jika belum ada
 if [ ! -d "$HOME/ccminer" ]; then
     git clone --single-branch -b ARM https://github.com/monkins1010/ccminer.git ~/ccminer
 fi
 
-# 3. 
+# 3. Bina ccminer
 cd ~/ccminer && ./build.sh
 
-# 4. 
+# 4. Buat launcher script
 cat > ~/miner-launcher.sh <<'EOF'
 #!/bin/bash
 
@@ -68,17 +68,22 @@ while true; do
         2) echo -ne "${YELLOW}Enter new pool domain and port: ${NC}"; read POOL; save_config ;;
         3) echo -ne "${YELLOW}Enter number of threads: ${NC}"; read THREADS; save_config ;;
         4) echo -ne "${YELLOW}Enter worker name: ${NC}"; read WORKER; save_config ;;
-        5) echo -e "${GREEN}Starting miner...${NC}"; cd ~/ccminer && ./ccminer -a verus -o "$POOL" -u "$WALLET.$WORKER" -p x -t "$THREADS"; break ;;
+        5)
+            echo -e "${GREEN}Starting miner...${NC}"
+            cd ~/ccminer/src
+            ./ccminer -a verus -o "$POOL" -u "$WALLET.$WORKER" -p x -t "$THREADS"
+            break
+            ;;
         6) echo -e "${RED}Exiting...${NC}"; exit 0 ;;
         *) echo -e "${RED}Invalid option${NC}";;
     esac
 done
 EOF
 
-# 5.
+# 5. Jadikan executable
 chmod +x ~/miner-launcher.sh
 
-# 6.
+# 6. Tambah alias jika belum ada
 if ! grep -q "alias verus=" ~/.bashrc; then
     echo "alias verus='bash ~/miner-launcher.sh'" >> ~/.bashrc
     source ~/.bashrc
