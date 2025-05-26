@@ -8,7 +8,6 @@ Skrip ini membolehkan anda untuk memasang **Verus miner (ccminer)** secara autom
 - Pasang Ubuntu secara automatik
 - Clone & build ccminer
 - Buat launcher 
-- type verus untuk 
 
 ---
 
