@@ -1,6 +1,17 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-echo "Autoscript Verus Miner Installer by MOMOGUNx"
+#!/data/data/com.termux/files/usr/bin/bash
+
+# COLOUR
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color / reset
+
+echo -e "${CYAN}"
+echo "======================================"
+echo -e "${GREEN}Autoscript Verus Miner Installer by MOMOGUNx${NC}"
+echo "======================================"
+echo -e "${NC}"
 
 # 1. INSTALL BASIC
 pkg update && pkg upgrade -y
