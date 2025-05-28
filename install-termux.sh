@@ -40,7 +40,7 @@ cd ccminer && ./build.sh
 echo -e "${YELLOW}[+] Cloning launcher script...${NC}"
 proot-distro login ubuntu -- bash -c "
 cd ~ &&
-wget -O miner-launcher.sh https://raw.githubusercontent.com/MOMOGUNx/REPO_NAME/main/menu.sh &&
+wget -O miner-launcher.sh https://raw.githubusercontent.com/MOMOGUNx/ccminer-installer-termux/main/menu.sh &&
 chmod +x miner-launcher.sh
 "
 
