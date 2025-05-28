@@ -25,7 +25,7 @@ bash install-termux.sh
 ## RUN
 
 ```Bash
-verus
+ccminer
 
 ```
 
