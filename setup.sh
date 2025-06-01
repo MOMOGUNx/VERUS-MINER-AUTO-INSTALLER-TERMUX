@@ -15,17 +15,6 @@ sleep 1
 sudo apt update
 sudo apt install -y git curl
 
-# Semak whitelist
-read -p "Masukkan username anda: " username
-ALLOWED_URL="https://raw.githubusercontent.com/MOMOGUNx/ccminer-installer-termux/main/allowed_users.txt"
-
-if curl -s "$ALLOWED_URL" | grep -qw "$username"; then
-    echo "✅ Akses dibenarkan. Meneruskan pemasangan..."
-else
-    echo "❌ Maaf, anda tidak dibenarkan memasang skrip ini."
-    exit 1
-fi
-
 # Clone repo ccminer-verus
 echo -e "\n📥 Cloning ccminer-verus..."
 if ! git clone https://github.com/monkins1010/ccminer.git ccminer-verus; then
