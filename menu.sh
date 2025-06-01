@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Colors
+# Warna terminal
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -10,19 +10,19 @@ NC='\033[0m'
 
 CONFIG_FILE="/root/.ccminer_config"
 
-# Default values
+# Nilai lalai
 WALLET="RW7XBUDKci2d7tsQugd5XPEbMvyTSpD5cB"
 POOL="stratum+tcp://ap.luckpool.net:3956"
 ALGO="verus"
 THREADS="1"
 WORKER="android1"
 
-# Load existing config
+# Load config sedia ada
 if [[ -f "$CONFIG_FILE" ]]; then
     source "$CONFIG_FILE"
 fi
 
-# Save config
+# Simpan config
 save_config() {
     cat <<EOF > "$CONFIG_FILE"
 WALLET="$WALLET"
@@ -33,7 +33,7 @@ WORKER="$WORKER"
 EOF
 }
 
-# Main menu
+# Menu utama
 while true; do
     clear
     echo -e "${CYAN}=========== CCminer Launcher ===========${NC}"
@@ -56,15 +56,29 @@ while true; do
     case $OPTION in
         1) echo -ne "${YELLOW}Enter wallet address: ${NC}"; read WALLET; save_config ;;
         2) echo -ne "${YELLOW}Enter pool URL: ${NC}"; read POOL; save_config ;;
-        3) echo -ne "${YELLOW}Enter mining algorithm (e.g. verus, lyra2v2): ${NC}"; read ALGO; save_config ;;
+        3) echo -ne "${YELLOW}Enter mining algorithm (e.g. verus): ${NC}"; read ALGO; save_config ;;
         4) echo -ne "${YELLOW}Enter number of threads: ${NC}"; read THREADS; save_config ;;
         5) echo -ne "${YELLOW}Enter worker name: ${NC}"; read WORKER; save_config ;;
         6)
             echo -e "${GREEN}Starting mining...${NC}"
-            cd ~/ccminer && ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" -p x -t "$THREADS"
-            break
+            cd ~/ccminer-verus || { echo -e "${RED}❌ Direktori ccminer-verus tidak wujud.${NC}"; sleep 2; continue; }
+
+            if [[ ! -x ./ccminer ]]; then
+                echo -e "${RED}❌ Fail ccminer tidak dijumpai atau tidak boleh dijalankan.${NC}"
+                sleep 2
+                continue
+            fi
+
+            ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" -p x -t "$THREADS"
+            read -p "Tekan Enter untuk kembali ke menu..." dummy
             ;;
-        7) echo -e "${RED}Exiting...${NC}"; exit 0 ;;
-        *) echo -e "${RED}Invalid option, please try again.${NC}"; sleep 1 ;;
+        7)
+            echo -e "${RED}Exiting...${NC}"
+            exit 0
+            ;;
+        *)
+            echo -e "${RED}Invalid option, please try again.${NC}"
+            sleep 1
+            ;;
     esac
 done
