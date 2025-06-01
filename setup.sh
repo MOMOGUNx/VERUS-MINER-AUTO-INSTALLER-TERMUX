@@ -34,33 +34,23 @@ echo -e "\n⚙️  Proses compile ccminer (sabar, ini mungkin ambil masa)..."
 ./configure CFLAGS="-O3"
 make -j"$(nproc)"
 
-# Download menu
-echo ""
-echo "Muat turun menu..."
+# Download menu.sh
+echo -e "\n📥 Muat turun menu..."
 mkdir -p ~/ccminer
 curl -s -o ~/ccminer/menu.sh https://raw.githubusercontent.com/MOMOGUNx/ccminer-installer-termux/main/menu.sh
 chmod +x ~/ccminer/menu.sh
 
-# Setup script run miner
-echo -e "\n🛠️  Menyediakan skrip run_ccminer.sh..."
-cat <<EOF > run_ccminer.sh
-#!/bin/bash
-./ccminer -a verus -o stratum+tcp://ap.luckpool.net:3956 -u RW7XBUDKci2d7tsQugd5XPEbMvyTSpD5cB -p x -t 3 --protocol-dump
-EOF
-
-chmod +x run_ccminer.sh
-
-# Bashrc alias
+# Alias 'ccminer' untuk buka menu
 if ! grep -q "alias ccminer=" ~/.bashrc; then
-    echo "alias ccminer='bash \$HOME/ccminer-verus/run_ccminer.sh'" >> ~/.bashrc
+    echo "alias ccminer='bash \$HOME/ccminer/menu.sh'" >> ~/.bashrc
     echo "✅ Alias 'ccminer' ditambah ke .bashrc"
 else
     echo "ℹ️  Alias 'ccminer' sudah wujud dalam .bashrc"
 fi
 
 echo -e "\n✅ Selesai dipasang!"
-echo -e "📌 Jalankan miner dengan perintah: \e[1;32mccminer\e[0m"
-echo -e "🔁 Reboot sebentar lagi untuk refresh environment..."
+echo -e "📌 Taip \e[1;32mccminer\e[0m untuk buka menu mining."
+echo -e "🔁 Reboot sebentar lagi untuk aktifkan alias..."
 sleep 3
 clear
 reboot
