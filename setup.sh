@@ -62,15 +62,15 @@ EOF
 chmod +x run_ccminer.sh
 
 # Bashrc alias
-if ! grep -q "alias verus=" ~/.bashrc; then
-    echo "alias verus='bash \$HOME/ccminer-verus/run_ccminer.sh'" >> ~/.bashrc
-    echo "✅ Alias 'verus' ditambah ke .bashrc"
+if ! grep -q "alias ccminer=" ~/.bashrc; then
+    echo "alias ccminer='bash \$HOME/ccminer-verus/run_ccminer.sh'" >> ~/.bashrc
+    echo "✅ Alias 'ccminer' ditambah ke .bashrc"
 else
-    echo "ℹ️  Alias 'verus' sudah wujud dalam .bashrc"
+    echo "ℹ️  Alias 'ccminer' sudah wujud dalam .bashrc"
 fi
 
 echo -e "\n✅ Selesai dipasang!"
-echo -e "📌 Jalankan miner dengan perintah: \e[1;32mverus\e[0m"
+echo -e "📌 Jalankan miner dengan perintah: \e[1;32mccminer\e[0m"
 echo -e "🔁 Reboot sebentar lagi untuk refresh environment..."
 sleep 3
 clear
