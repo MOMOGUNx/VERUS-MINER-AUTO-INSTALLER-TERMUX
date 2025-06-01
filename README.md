@@ -21,6 +21,11 @@ bash install-termux.sh
 
 ## INSTALL-LINUX
 
+```bash
+curl -O https://raw.githubusercontent.com/MOMOGUNx/ccminer-installer-termux/main/setup.sh
+bash setup.sh
+
+```
 
 ## RUN
 
