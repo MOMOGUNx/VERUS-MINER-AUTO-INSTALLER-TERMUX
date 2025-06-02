@@ -79,7 +79,7 @@ while true; do
                 PARAMS="-p x"
             fi
 
-            ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" $PARAMS -t "$THREADS" --no-color
+            ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" $PARAMS -t "$THREADS" 
             read -p "Tekan Enter untuk kembali ke menu..." dummy
             ;;
         7)
