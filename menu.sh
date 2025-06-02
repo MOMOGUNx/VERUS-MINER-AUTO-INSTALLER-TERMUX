@@ -16,6 +16,7 @@ POOL="stratum+tcp://ap.luckpool.net:3956"
 ALGO="verus"
 THREADS="1"
 WORKER="android1"
+HYBRID_MODE="OFF"
 
 # Load config sedia ada
 if [[ -f "$CONFIG_FILE" ]]; then
@@ -30,6 +31,7 @@ POOL="$POOL"
 ALGO="$ALGO"
 THREADS="$THREADS"
 WORKER="$WORKER"
+HYBRID_MODE="$HYBRID_MODE"
 EOF
 }
 
@@ -42,6 +44,7 @@ while true; do
     echo -e "${GREEN}Algorithm:      ${YELLOW}$ALGO${NC}"
     echo -e "${GREEN}Threads:        ${YELLOW}$THREADS${NC}"
     echo -e "${GREEN}Worker Name:    ${YELLOW}$WORKER${NC}"
+    echo -e "${GREEN}Hybrid Mode:    ${YELLOW}$HYBRID_MODE${NC}"
     echo -e "${CYAN}========================================${NC}"
     echo -e "${BLUE}1.${NC} Change wallet"
     echo -e "${BLUE}2.${NC} Change pool URL"
@@ -50,6 +53,7 @@ while true; do
     echo -e "${BLUE}5.${NC} Change worker name"
     echo -e "${BLUE}6.${NC} Start mining"
     echo -e "${BLUE}7.${NC} Exit"
+    echo -e "${BLUE}8.${NC} Toggle hybrid mode"
     echo -ne "${YELLOW}Choose an option: ${NC}"
     read OPTION
 
@@ -69,12 +73,26 @@ while true; do
                 continue
             fi
 
-            ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" -p x -t "$THREADS"
+            if [[ "$HYBRID_MODE" == "ON" ]]; then
+                PARAMS="-p d=16384,hybrid,xns"
+            else
+                PARAMS="-p x"
+            fi
+
+            ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" $PARAMS -t "$THREADS" --no-color
             read -p "Tekan Enter untuk kembali ke menu..." dummy
             ;;
         7)
             echo -e "${RED}Exiting...${NC}"
             exit 0
+            ;;
+        8)
+            if [[ "$HYBRID_MODE" == "ON" ]]; then
+                HYBRID_MODE="OFF"
+            else
+                HYBRID_MODE="ON"
+            fi
+            save_config
             ;;
         *)
             echo -e "${RED}Invalid option, please try again.${NC}"
