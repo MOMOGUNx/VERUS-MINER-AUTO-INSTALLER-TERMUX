@@ -11,11 +11,18 @@ Skrip ini membolehkan anda untuk memasang **Verus miner (ccminer)** secara autom
 
 ---
 
-## INSTALL-TERMUX
+## INSTALL-TERMUX MONKINS1010 FORK
 
 ```bash
 curl -O https://raw.githubusercontent.com/MOMOGUNx/ccminer-installer-termux/main/install-termux.sh
 bash install-termux.sh
+
+```
+## NSTALL-TERMUX2 OLINK70 FORK
+
+```bash
+https://raw.githubusercontent.com/MOMOGUNx/ccminer-installer-termux/main/install-termux2.sh
+bash install-termux2.sh
 
 ```
 
@@ -34,4 +41,6 @@ ccminer
 
 ```
 
-CREDIT CCMINER FORK FROM https://github.com/monkins1010/ccminer
+CREDIT CCMINER FORK FROM 
+** monkins1010
+** Olink70
