@@ -37,4 +37,3 @@ ccminer
 
 CREDIT CCMINER FORK FROM 
 ** monkins1010
-** Olink70
