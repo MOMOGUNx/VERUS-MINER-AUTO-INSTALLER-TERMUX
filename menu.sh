@@ -62,8 +62,8 @@ start_mining() {
 
     > "$LOG_FILE"
 
-    PARAMS="-p x"
-    [[ "$HYBRID_MODE" == "ON" ]] && PARAMS="-p d=16384,hybrid,xns"
+    PARAMS="-p d=8000S,xns"
+    [[ "$HYBRID_MODE" == "ON" ]] && PARAMS="-p d=8000S,hybrid,xns"
 
     ./ccminer -a "$ALGO" -o "$POOL" -u "$WALLET.$WORKER" $PARAMS -t "$THREADS" >> "$LOG_FILE" 2>&1 &
     echo $! > "$PID_FILE"
